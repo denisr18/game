@@ -8,12 +8,12 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.files.FileHandle;
 
 
-public class Sign implements GameObject {
+public class PlayerBoy implements GameObject {
     private Texture image;
     private Sprite sprite;
 
-    public Sign() {
-        image = new Texture("sign.png");
+    public PlayerBoy() {
+        image = new Texture("dinghyLarge1.png"); //TODO PATH ANPASSEN!
         sprite = new Sprite(image);
     }
     @Override
@@ -23,8 +23,8 @@ public class Sign implements GameObject {
 
     @Override
     public void setPosition(float x, float y) {
-        sprite.setPosition(x, y);
-    }
+        sprite.setPosition(x+20, y+15);
+    }  //TODO Hauptvariable für TileSize anlegen, falls es noch keine gibt, kein Hardcode wie bei mir
 
     @Override
     public void draw(SpriteBatch batch) {

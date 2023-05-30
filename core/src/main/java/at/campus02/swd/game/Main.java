@@ -12,6 +12,9 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import at.campus02.swd.game.gameobjects.GameObject;
 import at.campus02.swd.game.gameobjects.Sign;
 import at.campus02.swd.game.input.GameInput;
+import at.campus02.swd.game.gameobjects.FactoryMethod;
+
+import java.util.Random;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends ApplicationAdapter {
@@ -30,7 +33,19 @@ public class Main extends ApplicationAdapter {
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
-		gameObjects.add(new Sign());
+        FactoryMethod factory = new FactoryMethod();
+        int fieldSize = 6;
+        for (int i = 1; i < fieldSize +1 ; i++) {
+            for (int j = 1; j < fieldSize +1; j++) {
+                GameObject rt = factory.createObject("tile");
+                rt.setPosition(((fieldSize/2)-i)*75,((fieldSize/2)-j)*75); //TODO Hauptvariable für TileSize anlegen, falls es noch keine gibt, kein Hardcode wie bei mir
+                gameObjects.add(rt);
+            }
+
+        }
+        GameObject pb = factory.createObject("player");
+        pb.setPosition(0,0);
+        gameObjects.add(pb);
 		font = new BitmapFont();
 		font.setColor(Color.WHITE);
 		Gdx.input.setInputProcessor(this.gameInput);
