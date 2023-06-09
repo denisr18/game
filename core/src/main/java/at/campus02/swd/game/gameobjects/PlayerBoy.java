@@ -30,4 +30,14 @@ public class PlayerBoy implements GameObject {
     public void draw(SpriteBatch batch) {
         sprite.draw(batch);
     }
+
+    public void moveUp() {
+        System.out.println("Bewege nach oben.");
+        sprite.setPosition(0,+10);
+    }
+
+    public void moveDown() {
+        System.out.println("Bewege nach unten.");
+        sprite.setPosition(0,-10);
+    }
 }
